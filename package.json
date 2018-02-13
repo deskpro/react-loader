@@ -1,17 +1,17 @@
 {
-  "name": "react-loader",
+  "name": "@deskpro/react-loader",
   "description": "React component that displays a spinner via spin.js until your component is loaded",
   "version": "2.4.2",
   "main": "lib/react-loader.js",
   "scripts": {
-    "build": "./node_modules/.bin/jsx -x jsx lib lib",
-    "test-prepare": "./node_modules/.bin/browserify -e test/spec/suite.js -t reactify -o test/bundle.js",
-    "test-run": "./node_modules/.bin/mocha-phantomjs test/index.html",
+    "build": "babel --loose es6.modules lib/react-loader.jsx --out-file lib/react-loader.js",
+    "test-prepare": "./node_modules/.bin/browserify -e test/spec/suite.js -o test/bundle.js -t babelify --presets react",
+    "test-run": "./node_modules/.bin/mocha-phantomjs -p ./node_modules/phantomjs/bin/phantomjs test/index.html",
     "test": "npm run build && npm run test-prepare && npm run test-run"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/quickleft/react-loader"
+    "url": "https://github.com/deskpro/react-loader"
   },
   "keywords": [
     "react",
@@ -30,27 +30,30 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/quickleft/react-loader/issues"
+    "url": "https://github.com/deskpro/react-loader/issues"
   },
-  "homepage": "https://github.com/quickleft/react-loader",
+  "homepage": "https://github.com/deskpro/react-loader",
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0",
-    "react-dom": "^0.14.0 || ^15.0.0"
+    "react": "^0.14.0 || ^15.0.0 || ^16.0.0",
+    "react-dom": "^0.14.0 || ^15.0.0 || ^16.0.0"
   },
   "dependencies": {
     "create-react-class": "^15.5.2",
-    "prop-types": "^15.5.8",
+    "prop-types": "^15.6.0",
     "spin.js": "2.x"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babelify": "^8.0.0",
     "browserify": "^5.9.1",
     "chai": "^1.9.1",
     "es5-shim": "^4.0.1",
     "mocha": "^2.4.5",
     "mocha-phantomjs": "^4.0.2",
-    "react": "^15.0.0",
-    "react-dom": "^15.0.0",
-    "react-tools": "^0.13.3",
-    "reactify": "^1.1.1"
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   }
 }
